@@ -1,0 +1,21 @@
+<Project Sdk="Microsoft.NET.Sdk.Web">
+
+    <PropertyGroup>
+        <TargetFramework>net5.0</TargetFramework>
+    </PropertyGroup>
+
+    <ItemGroup>
+        <Compile Include="AsyncResultFunctions.fs" />
+        <Compile Include="WeatherForecast.fs" />
+        <Compile Include="Controllers/WeatherForecastController.fs" />
+        <Compile Include="Startup.fs" />
+        <Compile Include="Program.fs" />
+    </ItemGroup>
+
+    <ItemGroup>
+      <PackageReference Include="FSharp.Data" Version="3.3.3" />
+      <PackageReference Include="FsToolkit.ErrorHandling" Version="2.0.0" />
+      <PackageReference Include="Swashbuckle.AspNetCore" Version="6.0.5" />
+    </ItemGroup>
+
+</Project>
