@@ -14,8 +14,14 @@
 
     <ItemGroup>
       <PackageReference Include="FSharp.Data" Version="3.3.3" />
-      <PackageReference Include="FsToolkit.ErrorHandling" Version="2.0.0" />
+      <PackageReference Include="FsToolkit.ErrorHandling" Version="2.1.2" />
+      <PackageReference Include="FsToolkit.ErrorHandling.TaskResult" Version="2.1.2" />
+      <PackageReference Include="Newtonsoft.Json" Version="13.0.1" />
       <PackageReference Include="Swashbuckle.AspNetCore" Version="6.0.5" />
+    </ItemGroup>
+
+    <ItemGroup>
+      <ProjectReference Include="..\Data\Data.fsproj" />
     </ItemGroup>
 
 </Project>

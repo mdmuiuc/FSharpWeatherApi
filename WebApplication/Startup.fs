@@ -20,7 +20,9 @@ type Startup(configuration: IConfiguration) =
     member _.ConfigureServices(services: IServiceCollection) =
         // Add framework services.
         //services.AddMvc() |> ignore
-        services.AddControllers() |> ignore
+        services.AddControllers().
+            AddJsonOptions(fun options ->
+                options.JsonSerializerOptions.PropertyNamingPolicy <- null) |> ignore
         services.AddSwaggerGen(fun c -> 
             c.SwaggerDoc("v1", new OpenApiInfo( Title = "Testy", Version = "v1" ))
         ) |> ignore
@@ -29,13 +31,13 @@ type Startup(configuration: IConfiguration) =
     member _.Configure(app: IApplicationBuilder, env: IWebHostEnvironment) =
         if (env.IsDevelopment()) then
             app.UseDeveloperExceptionPage() |> ignore
-        app.UseHttpsRedirection()
-           .UseRouting()
-           .UseAuthorization()
-           .UseEndpoints(fun endpoints ->
-                endpoints.MapControllers() |> ignore)
-           .UseSwagger()
-           .UseSwaggerUI(fun c ->
-               c.SwaggerEndpoint("/swagger/v1/swagger.json", "Testy Api Jawn")
+        app.UseHttpsRedirection().
+           UseRouting().
+           UseAuthorization().
+           UseEndpoints(fun endpoints ->
+               endpoints.MapControllers() |> ignore).
+           UseSwagger().
+           UseSwaggerUI(fun c ->
+              c.SwaggerEndpoint("/swagger/v1/swagger.json", "Testy Api Jawn")
            ) |> ignore
            
